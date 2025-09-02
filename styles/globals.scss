@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "./variables.scss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --font-family-sans: var(--font-red-hat-text), system-ui, -apple-system, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-red-hat-text), system-ui, -apple-system, sans-serif;
+  padding-top: 80px; // Compensate for fixed header height
+}
+
+// @media (min-width: 1550px) and (max-width: 2200px) {
+//   html {
+//     font-size: 62%;
+//   }
+// }
+
+// @media screen and (max-width: 1199px) {
+//   html {
+//     font-size: 52% !important;
+//   }
+// }
+
+// @media screen and (min-width: 1200px) and (max-width: 1599px) {
+//   html {
+//     font-size: 50% !important;
+//   }
+// }
+
+// @media screen and (min-width: 2200px) and (max-width: 5000px) {
+//   html {
+//     font-size: 115% !important;
+//   }
+// }

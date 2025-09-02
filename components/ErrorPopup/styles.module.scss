@@ -1,0 +1,145 @@
+@use "../../styles/variables.scss" as *;
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: calc(100% - 2rem);
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  z-index: 1001;
+  animation: popupSlideIn 0.3s ease-out;
+  overflow: hidden;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 500px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-error-700);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  &__message {
+    font-size: 0.875rem;
+    color: var(--color-neutral-600);
+    margin: 0;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  &__closeBtn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: var(--color-neutral-400);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    margin-top: 0.125rem;
+
+    &:hover {
+      color: var(--color-neutral-600);
+      background-color: var(--color-neutral-100);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 1px;
+    }
+  }
+
+  &__progressBar {
+    height: 3px;
+    background-color: var(--color-error-100);
+    overflow: hidden;
+  }
+
+  &__progress {
+    height: 100%;
+    background-color: var(--color-error-500);
+    width: 100%;
+    animation: progressShrink 5s linear;
+    transform-origin: left;
+  }
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes progressShrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+// Mobile-specific adjustments
+@media (max-width: $breakpoint-tablet) {
+  .popup {
+    top: auto;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    width: auto;
+    max-width: none;
+    animation: popupSlideUp 0.3s ease-out;
+  }
+
+  @keyframes popupSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

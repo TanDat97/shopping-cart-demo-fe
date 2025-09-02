@@ -1,0 +1,235 @@
+@import '@/styles/variables.scss';
+
+.productCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--color-neutral-100);
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  
+  .productCard:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.stockBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--color-success-500);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.productInfo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.productHeader {
+  margin-bottom: 12px;
+}
+
+.productName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-neutral-800);
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sku {
+  font-size: 0.75rem;
+  color: var(--color-neutral-500);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.description {
+  color: var(--color-neutral-600);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.productFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.priceContainer {
+  flex: 1;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-600);
+}
+
+.addToCartBtn {
+  background: var(--color-primary-500);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  gap: 8px;
+  
+  &:hover:not(:disabled) {
+    background: var(--color-primary-600);
+    transform: translateY(-1px);
+  }
+  
+  &:disabled {
+    background: var(--color-neutral-300);
+    color: var(--color-neutral-500);
+    cursor: not-allowed;
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.quantityControls {
+  display: flex;
+  width: 150px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content:space-between;
+  background: var(--color-primary-500);
+  border: 1px solid var(--color-neutral-200);
+  overflow: hidden;
+
+  &:hover {
+    background: var(--color-primary-600);
+  }
+}
+
+.quantityBtn {
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+  
+  &:first-child {
+    border-radius: 7px 0 0 7px;
+  }
+  
+  &:last-child {
+    border-radius: 0 7px 7px 0;
+  }
+}
+
+.quantity {
+  color: white;
+  padding: 0 16px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  min-width: 40px;
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-tablet) {
+  .productCard {
+    border-radius: 8px;
+  }
+  
+  .imageContainer {
+    height: 180px;
+  }
+  
+  .productInfo {
+    padding: 16px;
+  }
+  
+  .productFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .addToCartBtn {
+    width: 100%;
+    min-width: unset;
+  }
+  
+  .quantityControls {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .quantityBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+  
+  .quantity {
+    height: 40px;
+    min-width: 50px;
+    font-size: 1rem;
+  }
+}

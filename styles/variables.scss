@@ -1,0 +1,115 @@
+//LAYOUT
+$page-format:90%;
+$wave-length:70%;
+$header-right:56.9rem;
+
+// Container max-width (Mobile First)
+$container-mobile: 375px;   // Mobile devices
+$container-tablet: 768px;   // Tablet devices  
+$container-desktop: 1440px; // Desktop devices
+
+// Breakpoints (Mobile First)
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1440px;
+
+// scss-docs-start variables-primary-color
+// All variable assignment is custom color for current project
+
+// Primary Colors - Based on #6fb4ff
+:root {
+  // Primary color palette
+  --color-primary-50: #f0f7ff;
+  --color-primary-100: #e0efff;
+  --color-primary-200: #b9dfff;
+  --color-primary-300: #7cc4ff;
+  --color-primary-400: #39a5ff;
+  --color-primary-500: #6fb4ff; // Main primary color
+  --color-primary-600: #0084ff;
+  --color-primary-700: #0066cc;
+  --color-primary-800: #0052a3;
+  --color-primary-900: #003d7a;
+  --color-primary-950: #002347;
+
+  // Secondary colors - Complementary purple/violet
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f3e8ff;
+  --color-secondary-200: #e9d5ff;
+  --color-secondary-300: #d8b4fe;
+  --color-secondary-400: #c084fc;
+  --color-secondary-500: #a855f7;
+  --color-secondary-600: #9333ea;
+  --color-secondary-700: #7c3aed;
+  --color-secondary-800: #6b21a8;
+  --color-secondary-900: #581c87;
+
+  // Accent colors - Orange for CTAs and highlights
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  // Success colors
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
+
+  // Warning colors
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+
+  // Error colors
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
+
+  // Neutral/Gray colors
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+}
+
+// Dark mode overrides
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --background: var(--color-neutral-900);
+//     --foreground: var(--color-neutral-100);
+//   }
+// }
+
+// scss-docs-end variables-primary-color

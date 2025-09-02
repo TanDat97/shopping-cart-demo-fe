@@ -1,0 +1,59 @@
+@import '@/styles/variables.scss';
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px 0;
+  // Mobile: 1 product per row
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  // Tablet: 2 products per row
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    > * {
+      flex: 1 1 calc(50% - 12px);
+      max-width: calc(50% - 12px);
+    }
+  }
+  
+  // Desktop: 3 products per row
+  @media (min-width: $breakpoint-desktop) {
+    > * {
+      flex: 1 1 calc(33.333% - 16px);
+      max-width: calc(33.333% - 16px);
+    }
+  }
+  
+  // Ensure consistent height for all cards
+  > * {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Alternative grid layout (comment out flex above and use this if preferred)
+/*
+.productList {
+  display: grid;
+  gap: 24px;
+  padding: 24px 0;
+  
+  // Mobile: 1 column
+  grid-template-columns: 1fr;
+  
+  // Tablet: 2 columns
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  // Desktop: 3 columns
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+*/
