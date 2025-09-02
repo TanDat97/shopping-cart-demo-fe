@@ -1,6 +1,7 @@
 import { ProductModel } from "@/models/product";
 import styles from "./styles.module.scss";
 import Image from "next/image";
+import { Utils } from "@/libs/utils";
 
 interface ProductProps {
   product: ProductModel;
@@ -15,13 +16,6 @@ export default function Product({ product, onAddToCart, onRemoveFromCart }: Prod
 
   const handleRemoveFromCart = () => {
     onRemoveFromCart?.(product);
-  };
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND'
-    }).format(price);
   };
 
   return (
@@ -48,7 +42,7 @@ export default function Product({ product, onAddToCart, onRemoveFromCart }: Prod
         
         <div className={styles.productFooter}>
           <div className={styles.priceContainer}>
-            <span className={styles.price}>{formatPrice(product.price)}</span>
+            <span className={styles.price}>{Utils.formatPrice(product.price)}</span>
           </div>
           
           {product.quantityInCart ? (

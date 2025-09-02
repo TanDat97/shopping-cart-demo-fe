@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import { useError } from '@/components/ErrorBoundary/ErrorContext';
@@ -12,12 +12,18 @@ interface UseApiState<T> {
 }
 
 interface UseApiReturn<T> extends UseApiState<T> {
-  execute: () => Promise<T | null>;
+  execute: (body?: any) => Promise<T | null>;
   reset: () => void;
 }
 
+interface ApiResponseFormat<T> {
+  code: number;
+  message: string;
+  data: T;
+}
+
 export function useApi<T = any>(
-  apiCall: () => Promise<ApiResponse<T>>
+  apiCall: (body?: any) => Promise<ApiResponse<ApiResponseFormat<T>>>
 ): UseApiReturn<T> {
   const [state, setState] = useState<UseApiState<T>>({
     data: null,
@@ -27,17 +33,18 @@ export function useApi<T = any>(
 
   const { showError } = useError();
 
-  const execute = async (): Promise<T | null> => {
+  const execute = async (body?: any): Promise<T | null> => {
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await apiCall();
+      const response = await apiCall(body);
+      const data = response.data?.data || null;
       setState({
-        data: response.data,
+        data: data,
         loading: false,
         error: null,
       });
-      return response.data;
+      return data;
     } catch (error) {
       setState(prev => ({
         ...prev,
@@ -77,17 +84,17 @@ export function useApi<T = any>(
 
 // Convenience hooks for different HTTP methods
 export function useApiGet<T = any>(endpoint: string) {
-  return useApi<T>(() => apiClient.get<T>(endpoint));
+  return useApi<T>(() => apiClient.get<ApiResponseFormat<T>>(endpoint));
 }
 
-export function useApiPost<T = any>(endpoint: string, body?: any) {
-  return useApi<T>(() => apiClient.post<T>(endpoint, body));
+export function useApiPost<T = any>(endpoint: string) {
+  return useApi<T>((body?: any) => apiClient.post<ApiResponseFormat<T>>(endpoint, body));
 }
 
-export function useApiPut<T = any>(endpoint: string, body?: any) {
-  return useApi<T>(() => apiClient.put<T>(endpoint, body));
+export function useApiPut<T = any>(endpoint: string) {
+  return useApi<T>((body?: any) => apiClient.put<ApiResponseFormat<T>>(endpoint, body));
 }
 
 export function useApiDelete<T = any>(endpoint: string) {
-  return useApi<T>(() => apiClient.delete<T>(endpoint));
+  return useApi<T>(() => apiClient.delete<ApiResponseFormat<T>>(endpoint));
 }

@@ -205,19 +205,13 @@
     padding: 16px;
   }
   
-  .productFooter {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-  
   .addToCartBtn {
-    width: 100%;
+    width: 150px;
     min-width: unset;
   }
   
   .quantityControls {
-    width: 100%;
+    width: 150px;
     justify-content: center;
   }
   
