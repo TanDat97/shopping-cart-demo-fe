@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { ErrorInfo, ErrorContextType, ErrorPageType } from './types';
+import { ErrorInfo, ErrorContextType } from './types';
 
 const ErrorContext = createContext<ErrorContextType | undefined>(undefined);
 

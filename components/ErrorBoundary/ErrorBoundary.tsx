@@ -76,7 +76,7 @@ class ErrorBoundary extends Component<Props, State> {
         <div className="error-boundary">
           <div className="error-boundary__container">
             <h2>Oops! Something went wrong</h2>
-            <p>We're sorry, but something unexpected happened.</p>
+            <p>We&apos;re sorry, but something unexpected happened.</p>
             <button 
               onClick={() => window.location.reload()}
               className="error-boundary__refresh-btn"

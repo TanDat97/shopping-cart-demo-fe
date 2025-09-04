@@ -157,11 +157,6 @@ export default function ProductContainer(props: PageContainerProps) {
   const [confirmedOrder, setConfirmedOrder] = useState<CartModel | null>(null);
 
   const handleConfirmOrder = useCallback((cart: CartModel) => {
-    setConfirmedOrder(cart);
-    setIsOrderConfirmed(true);
-  }, []);
-
-  const handleStartNewOrder = useCallback(() => {
     // Reset cart to default state
     setCart(defaultCart);
     setProducts(prevProducts =>
@@ -170,6 +165,14 @@ export default function ProductContainer(props: PageContainerProps) {
         quantityInCart: 0,
       }))
     );
+
+    // Set confirmed order
+    setConfirmedOrder(cart);
+    setIsOrderConfirmed(true);
+  }, []);
+
+  const handleStartNewOrder = useCallback(() => {
+    // Reset order confirmed state
     setIsOrderConfirmed(false);
     setConfirmedOrder(null);
   }, []);

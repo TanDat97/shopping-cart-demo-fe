@@ -3,7 +3,7 @@ export interface ErrorInfo {
   errorCode: string;
   message: string;
   code?: string;
-  details?: any;
+  details?: unknown;
 }
 
 export interface ErrorContextType {

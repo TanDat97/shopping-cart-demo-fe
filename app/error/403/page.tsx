@@ -10,7 +10,7 @@ export default function ForbiddenPage() {
           <h1 className={styles.errorPage__code}>403</h1>
           <h2 className={styles.errorPage__title}>Access Forbidden</h2>
           <p className={styles.errorPage__description}>
-            You don't have permission to access this resource. 
+            You don&apos;t have permission to access this resource. 
             Please contact your administrator if you believe this is an error.
           </p>
           <div className={styles.errorPage__actions}>

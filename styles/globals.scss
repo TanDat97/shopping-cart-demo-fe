@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "./variables.scss";
+@use "tailwindcss";
+@use "./variables.scss" as *;
 
 :root {
   --background: #ffffff;

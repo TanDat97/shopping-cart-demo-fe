@@ -10,7 +10,7 @@ export default function ServerErrorPage() {
           <h1 className={styles.errorPage__code}>500</h1>
           <h2 className={styles.errorPage__title}>Server Error</h2>
           <p className={styles.errorPage__description}>
-            Something went wrong on our end. We're working to fix the issue. 
+            Something went wrong on our end. We&apos;re working to fix the issue. 
             Please try again later or contact support if the problem persists.
           </p>
           <div className={styles.errorPage__actions}>

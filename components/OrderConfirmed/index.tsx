@@ -47,7 +47,7 @@ export default function OrderConfirmed({
           </div>
           <h2 className={styles.title}>Order Confirmed!</h2>
           <p className={styles.subtitle}>
-            Thank you for your order. We'll process it shortly.
+            Thank you for your order. We&apos;ll process it shortly.
           </p>
         </div>
 

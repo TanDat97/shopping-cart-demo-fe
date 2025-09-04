@@ -9,9 +9,7 @@ import { Close } from "@/services/icons/Close";
 import { HeaderNavs } from "./constants";
 import Link from "next/link";
 
-interface HeaderProps {}
-
-const Header: FC<HeaderProps> = ({}) => {
+const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {

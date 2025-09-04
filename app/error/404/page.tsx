@@ -10,7 +10,7 @@ export default function NotFoundPage() {
           <h1 className={styles.errorPage__code}>404</h1>
           <h2 className={styles.errorPage__title}>Page Not Found</h2>
           <p className={styles.errorPage__description}>
-            The page you're looking for doesn't exist. 
+            The page you&apos;re looking for doesn&apos;t exist. 
             It might have been moved, deleted, or you entered the wrong URL.
           </p>
           <div className={styles.errorPage__actions}>

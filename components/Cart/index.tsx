@@ -40,7 +40,7 @@ export default function Cart({
   const handlePromotionKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      handlePromotionSubmit(e as any);
+      handlePromotionSubmit(e as React.FormEvent);
     }
   };
 
