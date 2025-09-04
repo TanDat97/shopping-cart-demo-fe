@@ -56,7 +56,7 @@ export default function ProductContainer(props: PageContainerProps) {
   const handleUpdateCart = (product: ProductModel, quantity: number) => {
     setCart((prev: CartModel) => {
       let exist = false;
-      const newItems = prev.items.map((item: CartItemModel) => {
+      let newItems = prev.items.map((item: CartItemModel) => {
         if (item.productSku === product.sku) {
           exist = true;
           return { ...item, quantity: (item.quantity || 0) + quantity };
@@ -71,7 +71,10 @@ export default function ProductContainer(props: PageContainerProps) {
           quantity: quantity,
         });
       }
-      return { ...prev, items: newItems };
+      newItems = newItems.filter((item: CartItemModel) => item.quantity > 0);
+      const cart =
+        newItems.length > 0 ? { ...prev, items: newItems } : defaultCart;
+      return cart;
     });
   };
 
@@ -91,12 +94,12 @@ export default function ProductContainer(props: PageContainerProps) {
         item.sku === productSku ? { ...item, quantityInCart: 0 } : item
       )
     );
-    setCart((prev: CartModel) => ({
-      ...prev,
-      items: prev.items.filter(
+    setCart((prev: CartModel) => {
+      const newItems = prev.items.filter(
         (item: CartItemModel) => item.productSku !== productSku
-      ),
-    }));
+      );
+      return newItems.length > 0 ? { ...prev, items: newItems } : defaultCart;
+    });
   }, []);
 
   const handleEnterPromotions = useCallback((promotionCode: string) => {

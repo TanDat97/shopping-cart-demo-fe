@@ -31,16 +31,16 @@ $breakpoint-desktop: 1440px;
   --color-primary-950: #002347;
 
   // Secondary colors - Complementary purple/violet
-  --color-secondary-50: #faf5ff;
-  --color-secondary-100: #f3e8ff;
-  --color-secondary-200: #e9d5ff;
-  --color-secondary-300: #d8b4fe;
-  --color-secondary-400: #c084fc;
-  --color-secondary-500: #a855f7;
-  --color-secondary-600: #9333ea;
-  --color-secondary-700: #7c3aed;
-  --color-secondary-800: #6b21a8;
-  --color-secondary-900: #581c87;
+  --color-secondary-50: #C83B0E;
+  --color-secondary-100: #C83B0E;
+  --color-secondary-200: #C83B0E;
+  --color-secondary-300: #C83B0E;
+  --color-secondary-400: #C83B0E;
+  --color-secondary-500: #C83B0E;
+  --color-secondary-600: #C83B0E;
+  --color-secondary-700: #C83B0E;
+  --color-secondary-800: #C83B0E;
+  --color-secondary-900: #C83B0E;
 
   // Accent colors - Orange for CTAs and highlights
   --color-accent-50: #fff7ed;
@@ -102,6 +102,18 @@ $breakpoint-desktop: 1440px;
   --color-neutral-800: #262626;
   --color-neutral-900: #171717;
   --color-neutral-950: #0a0a0a;
+
+  // Custom colors
+  --color-text-primary: #C66C50;
+  --color-text-secondary: #988A87;
+  --color-text-tertiary: #5A5554;
+  --color-text-quaternary: #ACA09C;
+  --color-text-quinary: #665E5A;
+  --color-text-senary: #BC7863;
+  --color-text-septenary: #766F6D;
+  --color-text-octonary: #C83B0E;
+  --color-text-nonary: #C9BFBC;
+  --color-text-decimal: #CCC3BF;
 }
 
 // Dark mode overrides

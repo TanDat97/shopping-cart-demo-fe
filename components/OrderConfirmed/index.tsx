@@ -47,20 +47,20 @@ export default function OrderConfirmed({
           </div>
           <h2 className={styles.title}>Order Confirmed!</h2>
           <p className={styles.subtitle}>
-            Thank you for your order. We&apos;ll process it shortly.
+            We hope you enjoy your!
           </p>
         </div>
 
         {/* Order Summary */}
         <div className={styles.orderSummary}>
-          <h3 className={styles.sectionTitle}>Order Summary</h3>
+          {/* <h3 className={styles.sectionTitle}>Order Summary</h3> */}
           
           {/* Order ID */}
-          <div className={styles.orderInfo}>
+          {/* <div className={styles.orderInfo}>
             <span className={styles.orderId}>
               Order ID: #{orderData.uuid || 'ORD-' + Date.now()}
             </span>
-          </div>
+          </div> */}
 
           {/* Items */}
           <div className={styles.itemsList}>
@@ -68,11 +68,14 @@ export default function OrderConfirmed({
               <div key={`${item.productSku}-${index}`} className={styles.item}>
                 <div className={styles.itemInfo}>
                   <span className={styles.itemName}>{item.productName}</span>
-                  <span className={styles.itemSku}>SKU: {item.productSku}</span>
+                  {/* <span className={styles.itemSku}>SKU: {item.productSku}</span> */}
+                  <div className={styles.quantityPrice}>
+                    <span className={styles.quantity}>x{item.quantity}</span>
+                    <span className={styles.price}>@{Utils.formatPrice(item.price)}</span>
+                  </div>
                 </div>
                 <div className={styles.itemDetails}>
-                  <span className={styles.quantity}>x{item.quantity}</span>
-                  <span className={styles.price}>
+                  <span className={styles.totalPrice}>
                     {Utils.formatPrice(item.totalPrice || item.price * item.quantity)}
                   </span>
                 </div>
@@ -112,7 +115,7 @@ export default function OrderConfirmed({
             ) : null}
             
             <div className={styles.summaryRow + ' ' + styles.totalRow}>
-              <span>Total:</span>
+              <span>Order Total:</span>
               <span className={styles.totalAmount}>
                 {Utils.formatPrice(orderData.totalAmount || 0)}
               </span>
@@ -122,12 +125,6 @@ export default function OrderConfirmed({
 
         {/* Actions */}
         <div className={styles.actions}>
-          <button 
-            className={styles.secondaryBtn}
-            onClick={onClose}
-          >
-            Close
-          </button>
           <button 
             className={styles.primaryBtn}
             onClick={handleStartNewOrder}

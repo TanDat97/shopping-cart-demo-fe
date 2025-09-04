@@ -25,8 +25,6 @@ interface CartResponse {
   data: CartModel;
 }
 
-
-
 export default async function Home() {
   const initialProducts = await fetchData<ProductsResponse>("/v1/products");
   const initialCart = await fetchData<CartResponse>("/v1/carts/user");

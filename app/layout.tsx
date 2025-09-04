@@ -24,7 +24,7 @@ export default function RootLayout({
       >
         <ErrorProvider>
           <ErrorBoundary>
-            <Header />
+            {/* <Header /> */}
             {children}
             <ErrorPopup />
           </ErrorBoundary>

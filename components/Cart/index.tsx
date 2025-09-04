@@ -47,9 +47,8 @@ export default function Cart({
   return (
     <div className={styles.cart}>
       <div className={styles.cartHeader}>
-        <h2 className={styles.cartTitle}>Your Cart</h2>
-        <span className={styles.totalItems}>
-          {cart.totalItems || 0} items
+        <h2 className={styles.cartTitle}>Your Cart ({cart.totalItems || 0})</h2>
+        <span>
           {loading && <span className={styles.loadingIndicator}>⟳</span>}
         </span>
       </div>
@@ -80,18 +79,21 @@ export default function Cart({
                     </button>
                     <div className={styles.itemInfo}>
                       <h4 className={styles.productName}>{item.productName}</h4>
-                      <span className={styles.productSku}>
+                      {/* <span className={styles.productSku}>
                         SKU: {item.productSku}
-                      </span>
+                      </span> */}
                     </div>
 
                     <div className={styles.itemDetails}>
                       <div className={styles.quantityPrice}>
                         <span className={styles.quantity}>
-                          Quantity: {item.quantity}
+                          {item.quantity}x
                         </span>
                         <span className={styles.price}>
-                          {Utils.formatPrice(item.price)}
+                          @{Utils.formatPrice(item.price)}
+                        </span>
+                        <span className={styles.price}>
+                          {Utils.formatPrice(item.totalPrice || item.price * item.quantity)}
                         </span>
                       </div>
 
@@ -101,12 +103,12 @@ export default function Cart({
                         </div>
                       ) : null}
 
-                      <div className={styles.totalPrice}>
+                      {/* <div className={styles.totalPrice}>
                         Total:{' '}
                         {Utils.formatPrice(
                           item.totalPrice || item.price * item.quantity
                         )}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 ))}
@@ -195,7 +197,8 @@ export default function Cart({
           </>
         ) : (
           <div className={styles.emptyCart}>
-            <p>Your Cart is empty</p>
+
+            <p>Your added items will appear here</p>
           </div>
         )}
       </div>

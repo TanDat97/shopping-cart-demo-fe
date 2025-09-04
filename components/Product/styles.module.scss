@@ -48,24 +48,27 @@
 }
 
 .productInfo {
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.productHeader {
-  margin-bottom: 12px;
+.category {
+  font-size: 0.7rem;
+  color: var(--color-text-quaternary);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 0 4px 0;
 }
 
 .productName {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-neutral-800);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-quinary);
   margin: 0 0 4px 0;
   line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -83,7 +86,7 @@
   line-height: 1.5;
   margin: 0 0 16px 0;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  // -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex-grow: 1;
@@ -102,19 +105,29 @@
 }
 
 .price {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-primary-600);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-senary);
+}
+
+.productQuantity {
+  position: relative;
 }
 
 .addToCartBtn {
-  background: var(--color-primary-500);
-  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: white;
+  color: var(--color-text-septenary);
   border: none;
   padding: 10px 16px;
+  border: 1px solid var(--color-secondary-500);
   border-radius: 8px;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -123,11 +136,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  gap: 8px;
   
   &:hover:not(:disabled) {
-    background: var(--color-primary-600);
-    transform: translateY(-1px);
+    background: var(--color-secondary-500);
+    color: white;
   }
   
   &:disabled {
@@ -142,17 +154,24 @@
 }
 
 .quantityControls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
   display: flex;
   width: 150px;
+  height: 40px;
   border-radius: 20px;
   align-items: center;
   justify-content:space-between;
-  background: var(--color-primary-500);
-  border: 1px solid var(--color-neutral-200);
+  background: var(--color-secondary-500);
+  border: 1px solid var(--color-secondary-500);
   overflow: hidden;
 
+
   &:hover {
-    background: var(--color-primary-600);
+    background: var(--color-secondary-500);
   }
 }
 
@@ -202,7 +221,7 @@
   }
   
   .productInfo {
-    padding: 16px;
+    padding: 25px 16px 20px;
   }
   
   .addToCartBtn {

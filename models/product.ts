@@ -2,6 +2,7 @@ export interface ProductModel {
   id: string;
   sku: string;
   name: string;
+  category: string;
   price: number;
   description: string;
   images: {

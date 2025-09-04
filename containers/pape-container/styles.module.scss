@@ -2,23 +2,22 @@
 
 .pageContainer {
   display: flex;
-  gap: 24px;
-  max-width: 1200px;
+  justify-content: space-between;
+  width: 100%;
   margin: 0 auto;
-  padding: 24px;
   min-height: 100vh;
 }
 
 .productSection {
-  flex: 0 0 75%;
-  width: 75%;
+  flex: 0 0 68%;
+  width: 68%;
 }
 
 .cartSection {
-  flex: 0 0 25%;
-  width: 25%;
-  position: sticky;
-  top: 85px;
+  flex: 0 0 30%;
+  width: 30%;
+  // position: sticky;
+  top: 60px;
   height: fit-content;
 }
 
