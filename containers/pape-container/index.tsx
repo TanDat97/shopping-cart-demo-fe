@@ -4,7 +4,7 @@ import Cart from '@/components/Cart';
 import ProductList from '@/components/ProductList';
 import OrderConfirmed from '@/components/OrderConfirmed';
 import { useApiPost } from '@/hooks/useApi';
-import { CartItemModel, CartModel, PromotionModel } from '@/models/cart';
+import { CartItemModel, CartModel } from '@/models/cart';
 import { ProductModel } from '@/models/product';
 import { useState, useCallback, useEffect } from 'react';
 import React from 'react';
@@ -16,7 +16,7 @@ interface PageContainerProps {
 }
 
 const defaultCart = {
-  uuid: '',
+  uuid: undefined,
   totalDiscount: 0,
   subTotalAmount: 0,
   totalAmount: 0,
@@ -42,6 +42,12 @@ export default function ProductContainer(props: PageContainerProps) {
     execute: executeCartPreview,
     loading: cartLoading,
   } = useApiPost<CartModel>('/v1/carts/preview');
+
+  const {
+    data: cartCheckoutData,
+    execute: executeCartCheckout,
+    loading: cartCheckoutLoading,
+  } = useApiPost<CartModel>('/v1/carts/checkout');
 
   const handleUpdateProducts = (product: ProductModel, quantity: number) => {
     setProducts((prev: ProductModel[]) => {
@@ -155,24 +161,45 @@ export default function ProductContainer(props: PageContainerProps) {
     }
   }, [cartPreviewData]);
 
+  // Handle checkout success - reset cart and products only when checkout is successful
+  useEffect(() => {
+    if (cartCheckoutData) {
+      // Reset cart to default state
+      setCart(defaultCart);
+      setProducts(prevProducts =>
+        prevProducts.map(product => ({
+          ...product,
+          quantityInCart: 0,
+        }))
+      );
+
+      // Set confirmed order and show confirmation
+      setConfirmedOrder(cartCheckoutData);
+      setIsOrderConfirmed(true);
+    }
+  }, [cartCheckoutData]);
+
   // Order confirmed state
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState<CartModel | null>(null);
 
   const handleConfirmOrder = useCallback((cart: CartModel) => {
-    // Reset cart to default state
-    setCart(defaultCart);
-    setProducts(prevProducts =>
-      prevProducts.map(product => ({
-        ...product,
-        quantityInCart: 0,
-      }))
-    );
-
-    // Set confirmed order
-    setConfirmedOrder(cart);
-    setIsOrderConfirmed(true);
-  }, []);
+    // Call checkout API only
+    if (cart.items.length > 0) {
+      const requestBody = {
+        currency: cart.currency,
+        promotionCodes: cart.promotionCodes,
+        items: cart.items.map(item => ({
+          productName: item.productName,
+          productImage: item.productImage,
+          productSku: item.productSku,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      };
+      executeCartCheckout(requestBody);
+    }
+  }, [executeCartCheckout]);
 
   const handleStartNewOrder = useCallback(() => {
     // Reset order confirmed state
@@ -196,7 +223,7 @@ export default function ProductContainer(props: PageContainerProps) {
             onRemoveItem={handleRemoveItem}
             onEnterPromotions={handleEnterPromotions}
             onConfirmOrder={handleConfirmOrder}
-            loading={cartLoading}
+            loading={cartLoading || cartCheckoutLoading}
           />
         </div>
       </div>

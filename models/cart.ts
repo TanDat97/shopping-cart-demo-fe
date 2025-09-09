@@ -1,5 +1,5 @@
 export interface CartModel {
-  uuid: string;
+  uuid?: string;
   totalDiscount?: number;
   subTotalAmount?: number;
   totalAmount?: number;
