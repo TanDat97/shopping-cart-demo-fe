@@ -66,6 +66,9 @@ export default function OrderConfirmed({
           <div className={styles.itemsList}>
             {orderData.items.map((item, index) => (
               <div key={`${item.productSku}-${index}`} className={styles.item}>
+                <div className={styles.itemImage}>
+                  <img src={item.productImage} alt={item.productName} />
+                </div>
                 <div className={styles.itemInfo}>
                   <span className={styles.itemName}>{item.productName}</span>
                   {/* <span className={styles.itemSku}>SKU: {item.productSku}</span> */}

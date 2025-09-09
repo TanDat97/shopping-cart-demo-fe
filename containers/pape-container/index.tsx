@@ -73,6 +73,7 @@ export default function ProductContainer(props: PageContainerProps) {
         newItems.push({
           productSku: product.sku,
           productName: product.name,
+          productImage: product.images?.mobile ?? '',
           price: product.price,
           quantity: quantity,
         });
